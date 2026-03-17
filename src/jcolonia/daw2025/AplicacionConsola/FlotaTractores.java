@@ -11,20 +11,32 @@ import java.util.List;
 public class FlotaTractores {
     private List<Tractor> lista;
 
+    /**
+     * Crea una instancia e inicializa la listade tractores.
+     */
     public FlotaTractores() {
         this.lista = new ArrayList<>();
     }
-
+    
+    /**
+     * Añade un objeto tractor a lista actual
+     * @param t el objeto {@link tractor} que se quiere incorporar
+     */
     public void agregarTractor(Tractor t) {
         lista.add(t);
     }
 
+    /**
+     * Recupero los datos de los tractores guardados
+     * @return la lista de todos los tractores registrados
+     */
     public List<Tractor> getTodos() {
         return new ArrayList<>(lista);
     }
 
     /**
      * Genera la lista de strings para el proceso de exportación.
+     * @return lista de cadenas de texto para escribirlas en un archivo
      */
     public List<String> toListExportar() {
         List<String> lineas = new ArrayList<>();

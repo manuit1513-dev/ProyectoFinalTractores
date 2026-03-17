@@ -3,7 +3,7 @@ package jcolonia.daw2025.AplicacionConsola;
 /**
  * Representa un Tractor con sus atributos principales.
  * @author manueld.garpra
- * @version 1.0
+ * @version 1.1
  */
 public class Tractor {
     private String marca;
@@ -24,12 +24,33 @@ public class Tractor {
     public String getTraccion() { return traccion; }
 
     /**
-     * Devuelve el objeto formateado para exportar.
+     * Devuelve el objeto formateado para exportar según el esquema de la pizarra.
      * Ejemplo: JohnDeere # 6120M # 120 # 4WD
      */
-    @Override
-    public String toString() {
+    public String toLineaExportar() {
         return String.format("%s # %s # %d # %s", marca, modelo, potencia, traccion);
     }
+
+    /**
+     * Método de factoría: Crea un Tractor a partir de una línea de texto.
+     * @param linea La cadena de texto con los datos separados por '#'
+     * @return Un nuevo objeto Tractor
+     */
+    public static Tractor of(String linea) {
+        String[] trozos = linea.split("#");
+        
+        String marca = trozos[0].trim();
+        String modelo = trozos[1].trim();
+        int potencia = Integer.parseInt(trozos[2].trim());
+        String traccion = trozos[3].trim();
+        
+        return new Tractor(marca, modelo, potencia, traccion);
+    }
+
+    @Override
+    public String toString() {
+        return toLineaExportar();
+    }
 }
+
 
