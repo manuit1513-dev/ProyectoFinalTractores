@@ -6,11 +6,30 @@ package jcolonia.daw2025.AplicacionConsola;
  * @version 1.1
  */
 public class Tractor {
+    /**
+     * La marac del tractor.
+     */
     private String marca;
+    /**
+     * El modelo del tractor.
+     */
     private String modelo;
+    /**
+     * La potencia del tractor en CV.
+     */
     private int potencia;
+    /**
+     * Tipo de tracción del tractor que sea 2WD o 4WD.
+     */
     private String traccion;
 
+    /**
+     * Construvtor con los parametros que debe llevar cada tractor.
+     * @param marca La marca
+     * @param modelo El modelo
+     * @param potencia La potencia en CV
+     * @param traccion La tracción 2WD o 4WD
+     */
     public Tractor(String marca, String modelo, int potencia, String traccion) {
         this.marca = marca;
         this.modelo = modelo;

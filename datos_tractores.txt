@@ -1,2 +1,1 @@
-John Deere # 6120M # 120 # 4WD
-Fendt # 724 Vario # 240 # 4WD
+Ebro # 6125 # 120 # 2WD

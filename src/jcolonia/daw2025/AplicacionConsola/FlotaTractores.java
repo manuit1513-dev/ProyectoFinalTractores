@@ -9,6 +9,9 @@ import java.util.List;
  * @version 1.0
  */
 public class FlotaTractores {
+    /**
+     * Lista privada de los tractores.
+     */
     private List<Tractor> lista;
 
     /**
@@ -20,7 +23,7 @@ public class FlotaTractores {
     
     /**
      * Añade un objeto tractor a lista actual
-     * @param t el objeto {@link tractor} que se quiere incorporar
+     * @param t el objeto {@link Tractor} que se quiere incorporar
      */
     public void agregarTractor(Tractor t) {
         lista.add(t);

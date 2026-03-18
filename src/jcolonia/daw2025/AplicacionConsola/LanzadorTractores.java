@@ -3,17 +3,20 @@ package jcolonia.daw2025.AplicacionConsola;
 
 /**
 * Clase principal que arranca la aplicación de gestión de tractores.
-* @author [Tu Nombre]
+* @author manueld.garpra
+* @version 1.1
 */
-public class LanzadorTractores {	
-	public static void main(String[] args) {
-	// 1. Creamos el conjunto de datos (Modelo)
-	FlotaTractores miFlota = new FlotaTractores();
-	        
-	// 2. Creamos la interfaz (Vista) y le pasamos la flota
-	VistaGeneral vista = new VistaGeneral(miFlota);
-	        
-	// 3. Arrancamos el menú
-	vista.menuPrincipal();
-	}
+public class LanzadorTractores {    
+    /**
+     * Punto de entrada del programa.
+     * Nos muetra un menú con opciones que podemos hacer como
+     * dar de alta, mostrar lista, esportar el archivo y salir.
+     * 
+     * @param args opciones de ejecución.
+     */
+    public static void main(String[] args) {
+        ControlCatalogo miControl = new ControlCatalogo();
+        
+        miControl.iniciar();
+    }
 }

@@ -8,27 +8,13 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class VistaGeneral {
-    private FlotaTractores flota;
+    private ControlCatalogo control;
     private Scanner teclado;
 
-    public VistaGeneral(FlotaTractores flota) {
-        this.flota = flota;
+    public VistaGeneral(ControlCatalogo control) {
+        this.control = control;
         this.teclado = new Scanner(System.in);
         
-        try {
-            List<String> lineas = AccesoArchivo.leer("datos_tractores.txt");
-            for (String linea : lineas) {
-                String[] partes = linea.split(" # ");
-                if (partes.length == 4) {
-                    Tractor t = new Tractor(partes[0], partes[1], 
-                                            Integer.parseInt(partes[2]), partes[3]);
-                    this.flota.agregarTractor(t);
-                }
-            }
-            System.out.println("--> Datos previos cargados correctamente.");
-        } catch (Exception e) {
-            System.out.println("--> Iniciando catálogo vacío (no se encontró archivo previo).");
-        }
     }
 
     public void menuPrincipal() {
@@ -56,29 +42,37 @@ public class VistaGeneral {
     }
 
     private void altaTractor() {
-        System.out.println("\n--- NUEVO TRACTOR ---");
-        System.out.print("Marca: "); String marca = teclado.nextLine();
-        System.out.print("Modelo: "); String modelo = teclado.nextLine();
-        System.out.print("Potencia (CV): "); int cv = Integer.parseInt(teclado.nextLine());
-        System.out.print("Tracción (2WD/4WD): "); String traccion = teclado.nextLine();
-        
-        flota.agregarTractor(new Tractor(marca, modelo, cv, traccion));
-        System.out.println("Tractor guardado correctamente.");
+        try {
+            System.out.println("\n--- NUEVO TRACTOR ---");
+            System.out.print("Marca: "); String marca = teclado.nextLine();
+            System.out.print("Modelo: "); String modelo = teclado.nextLine();
+            
+            System.out.print("Potencia (CV): "); 
+            // Usamos .trim() para limpiar espacios accidentales
+            int cv = Integer.parseInt(teclado.nextLine().trim());
+            
+            System.out.print("Tracción: "); String traccion = teclado.nextLine();
+            
+            control.añadirTractor(marca, modelo, cv, traccion);
+            System.out.println("Tractor guardado.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error en los datos: La potencia debe ser un número.");
+        }
     }
+
 
     private void listarTractores() {
         System.out.println("\n--- LISTADO DE FLOTA ---");
-        if (flota.getTodos().isEmpty()) {
+        if (control.obtenerLista().isEmpty()) {
             System.out.println("No hay tractores registrados.");
         } else {
-            flota.getTodos().forEach(System.out::println);
+            control.obtenerLista().forEach(System.out::println);
         }
     }
 
     private void exportarDatos() {
         try {
-            // El nombre del archivo debe ser el que pide el profesor o uno genérico
-            AccesoArchivo.escribir("datos_tractores.txt", flota.toListExportar());
+            control.ejecutarExportacion();
             System.out.println("Datos exportados con éxito a 'datos_tractores.txt'");
         } catch (Exception e) {
             System.out.println("Error al exportar: " + e.getMessage());
