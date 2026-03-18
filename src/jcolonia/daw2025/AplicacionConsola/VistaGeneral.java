@@ -1,5 +1,4 @@
 package jcolonia.daw2025.AplicacionConsola;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,12 +10,21 @@ public class VistaGeneral {
     private ControlCatalogo control;
     private Scanner teclado;
 
+    /**
+     * Construye una nueva vista y la vincula con su controlador 
+     * Inicializa el Scanner
+     * @param control
+     */
     public VistaGeneral(ControlCatalogo control) {
         this.control = control;
         this.teclado = new Scanner(System.in);
         
     }
 
+    /**
+     * Muestra el menú principal con un bucle
+     * no finaliza hasta que se escoga la opción de salir.
+     */
     public void menuPrincipal() {
         int opcion = 0;
         do {
@@ -41,6 +49,13 @@ public class VistaGeneral {
         } while (opcion != 4);
     }
 
+    /**
+     * Solicita al usuario los datos de un nuevo tractor mediante consola.
+     * Recoge la marca, modelo, potencia (CV) y tipo de tracción.
+     * Valida que la potencia sea un número entero válido antes de enviarlo
+     * 
+     * @throws NumberFormatException Si el usuario introduce texto en el campo de potencia.
+     */
     private void altaTractor() {
         try {
             System.out.println("\n--- NUEVO TRACTOR ---");
@@ -48,7 +63,6 @@ public class VistaGeneral {
             System.out.print("Modelo: "); String modelo = teclado.nextLine();
             
             System.out.print("Potencia (CV): "); 
-            // Usamos .trim() para limpiar espacios accidentales
             int cv = Integer.parseInt(teclado.nextLine().trim());
             
             System.out.print("Tracción: "); String traccion = teclado.nextLine();
@@ -60,7 +74,11 @@ public class VistaGeneral {
         }
     }
 
-
+    /**
+     * Muestra por pantalla la lista completa de tractores registrados en la flota.
+     * Si la lista está vacía, informa al usuario con un mensaje
+     * Utiliza el método {@code toString()} de la clase {@link Tractor} para la visualización.
+     */
     private void listarTractores() {
         System.out.println("\n--- LISTADO DE FLOTA ---");
         if (control.obtenerLista().isEmpty()) {
@@ -70,6 +88,10 @@ public class VistaGeneral {
         }
     }
 
+    /**
+     * Inicia el proceso de llevar los datos a un archivo de texto
+     * Muestra un mensaje de confirmación o de error según el resultado de la operación.
+     */
     private void exportarDatos() {
         try {
             control.ejecutarExportacion();

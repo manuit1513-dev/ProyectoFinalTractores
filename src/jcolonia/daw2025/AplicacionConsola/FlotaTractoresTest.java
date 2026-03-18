@@ -6,6 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
+/**
+ * Pruebas unitarias para la clase FlotaTractor.
+ */
 class FlotaTractoresTest {
 
     private FlotaTractores flota;
@@ -33,7 +36,6 @@ class FlotaTractoresTest {
         assertEquals(1, resultado.size(), "Debe haber un tractor en la lista");
         assertEquals(t, resultado.get(0), "El tractor recuperado debe ser el mismo");
         
-        // Verificación de encapsulamiento (que getTodos devuelve una copia)
         resultado.clear(); 
         assertEquals(1, flota.getTodos().size(), "La lista interna no debe verse afectada por cambios externos");
     }

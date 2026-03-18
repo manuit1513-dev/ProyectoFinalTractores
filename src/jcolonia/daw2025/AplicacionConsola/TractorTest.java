@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Pruebas unitarias para la clase Tractor.
- * Logra un 100% de cobertura de líneas y métodos.
  */
 class TractorTest {
 

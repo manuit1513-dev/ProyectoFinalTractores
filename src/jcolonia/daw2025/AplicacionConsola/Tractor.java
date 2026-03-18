@@ -37,9 +37,28 @@ public class Tractor {
         this.traccion = traccion;
     }
 
+    /**
+     * Devuleve el nombre del fabricante
+     * @return La marca
+     */
     public String getMarca() { return marca; }
+    
+    /**
+     * Devuelve el modelo de la marca
+     * @return El modelo del tractor
+     */
     public String getModelo() { return modelo; }
+    
+    /**
+     * Devuelve la potencia del motor en CV
+     * @return Cantida de CV
+     */
     public int getPotencia() { return potencia; }
+    
+    /**
+     * Devuelve el tipo de tracción de ese tractor
+     * @return La tracción
+     */
     public String getTraccion() { return traccion; }
 
     /**

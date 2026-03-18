@@ -48,5 +48,31 @@ public class FlotaTractores {
         }
         return lineas;
     }
+    
+    /**
+     * Procesa las líneas de texto recibidas del archivo para reconstruir
+     * los objetos Tractor, usando el carácter '#' como delimitador.
+     * 
+     * @param datos La lista de cadenas de texto leídas del archivo.
+     */
+    public void cargarDesdeLista(List<String> datos) {
+        for (String linea : datos) {
+            String[] partes = linea.split("#");
+            
+            if (partes.length == 4) {
+                try {
+                    String marca = partes[0].trim();
+                    String modelo = partes[1].trim();
+                    int cv = Integer.parseInt(partes[2].trim());
+                    String traccion = partes[3].trim();
+                    
+                    this.agregarTractor(new Tractor(marca, modelo, cv, traccion));
+                } catch (NumberFormatException e) {
+                    System.err.println("Error: No se puede convertir la potencia en la línea: " + linea);
+                }
+            }
+        }
+    }
+
 }
 
