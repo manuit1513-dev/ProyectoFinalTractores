@@ -64,6 +64,7 @@ public class Tractor {
     /**
      * Devuelve el objeto formateado para exportar según el esquema de la pizarra.
      * Ejemplo: JohnDeere # 6120M # 120 # 4WD
+     * @return La línea de exportación con el formato correcto
      */
     public String toLineaExportar() {
         return String.format("%s # %s # %d # %s", marca, modelo, potencia, traccion);
@@ -85,6 +86,12 @@ public class Tractor {
         return new Tractor(marca, modelo, potencia, traccion);
     }
 
+    /**
+     * Devuelve la representación en cadena del objeto 
+     * que coincide con el formato de exportación
+     * 
+     * @return Cadena con los datos del tractor separados por #.
+     */
     @Override
     public String toString() {
         return toLineaExportar();

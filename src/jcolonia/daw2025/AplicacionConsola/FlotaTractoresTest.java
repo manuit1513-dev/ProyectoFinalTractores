@@ -8,16 +8,26 @@ import java.util.List;
 
 /**
  * Pruebas unitarias para la clase FlotaTractor.
+ * Verifica la gestión de la flota 
  */
 class FlotaTractoresTest {
 
+    /**
+     * La flota de tractores
+     */
     private FlotaTractores flota;
 
+    /**
+     * Inicializa una flota nueva antes de cada método del test.
+     */
     @BeforeEach
     void setUp() {
         flota = new FlotaTractores();
     }
 
+    /**
+     * Verifica que el constructor se inicia bien la lista y sin elementos
+     */
     @Test
     @DisplayName("Verifica que la flota se inicia vacía")
     void testConstructorYVacio() {
@@ -25,6 +35,9 @@ class FlotaTractoresTest {
         assertTrue(flota.getTodos().isEmpty(), "La lista debe iniciar vacía");
     }
 
+    /**
+     * Prueba que el agregar un nuevo tractor no afecta a la lista ya existente.
+     */
     @Test
     @DisplayName("Prueba agregar un tractor y recuperar la lista")
     void testAgregarYGetTodos() {
@@ -40,6 +53,10 @@ class FlotaTractoresTest {
         assertEquals(1, flota.getTodos().size(), "La lista interna no debe verse afectada por cambios externos");
     }
 
+    /**
+     * Verifica que la flota se convierte en una lista de cadenas correctas
+     * para exportar y coincide con el formato que se pide.
+     */
     @Test
     @DisplayName("Prueba la generación de lista para exportar")
     void testToListExportar() {

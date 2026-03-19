@@ -7,13 +7,19 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class VistaGeneral {
+    /**
+     * Controlador con las operaciones del catálogo
+     */
     private ControlCatalogo control;
+    /**
+     * 
+     */
     private Scanner teclado;
 
     /**
      * Construye una nueva vista y la vincula con su controlador 
      * Inicializa el Scanner
-     * @param control
+     * @param control el controlador que gestiona la lógica de la vista.
      */
     public VistaGeneral(ControlCatalogo control) {
         this.control = control;

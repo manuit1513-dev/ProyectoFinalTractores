@@ -6,9 +6,13 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Pruebas unitarias para la clase Tractor.
+ * Verifica que crea, manipula y exporta bien los datos de tractores.
  */
 class TractorTest {
 
+    /**
+     * Test que prueba que funciona correctamente la asignación y recuperación de los atributos
+     */
     @Test
     @DisplayName("Verificar que el constructor y los getters funcionan correctamente")
     void testConstructorYGetters() {
@@ -22,6 +26,9 @@ class TractorTest {
         );
     }
 
+    /**
+     * Verifica que el método genera una cadena con el formato con # que se pide.
+     */
     @Test
     @DisplayName("Verificar el formato de exportación")
     void testToLineaExportar() {
@@ -30,6 +37,9 @@ class TractorTest {
         assertEquals(esperado, t.toLineaExportar(), "El formato de exportación es incorrecto");
     }
 
+    /**
+     * Verifica que se cumpla el formato de exportación con #.
+     */
     @Test
     @DisplayName("Verificar que toString() devuelve lo mismo que toLineaExportar()")
     void testToString() {
@@ -37,6 +47,10 @@ class TractorTest {
         assertEquals(t.toLineaExportar(), t.toString(), "toString debe coincidir con toLineaExportar");
     }
 
+    /**
+     * Valida que el método factoria sea capaz de parsear una cadena, limpia espacios blancos y 
+     * convierte los tipos de datos de forma correcta
+     */
     @Test
     @DisplayName("Verificar la creación de un objeto mediante el método factoría of()")
     void testMetodoFactoriaOf() {

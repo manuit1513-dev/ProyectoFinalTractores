@@ -11,7 +11,13 @@ import java.util.List;
  * @version 1.0
  */
 public class ControlCatalogo {
-	 private FlotaTractores flota;
+		 /**
+		 * El grupo de tractores
+		 */
+		private FlotaTractores flota;
+	    /**
+	     * Vista que tendra el usuario cuando ejecute el programa
+	     */
 	    private VistaGeneral vista;
 
 	    /**
